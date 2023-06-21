@@ -39,6 +39,8 @@ src/server/images/*
 src/server/integration/py/gee-keys/
 db/dump/
 src/server/bin/GeoJSON/
+src/server/core
+src/server/1
 *.out
 *.log
 .idea
