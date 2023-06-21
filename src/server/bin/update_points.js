@@ -66,7 +66,7 @@ const url = 'mongodb://172.18.0.6:27017';
 
 	try {
 
-		const db = client.db("tvi");
+		const db = client.db("tvi-indonesia");
 
 		let collection = db.collection('points');
 

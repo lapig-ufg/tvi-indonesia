@@ -14,7 +14,7 @@ const geojsonFile = process.argv[2];
 const campaign = process.argv[3];
 
 const collectionPointsName = "points";
-const dbUrl = 'mongodb://127.0.0.1:27019/tvi';
+const dbUrl = 'mongodb://127.0.0.1:27019/tvi-indonesia';
 
 let campaignCollection = null;
 let pointsCollection = null;

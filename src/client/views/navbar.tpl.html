@@ -2,15 +2,15 @@
   <nav class="navbar navbar-inverse container-fluid" ng-show="user.type == 'inspector'">
     <div class="blog-masthead row">
       <div class="col-md-6">
-          <span class="navbar-brand" style="font-weight: 900;">{{current}}/{{total}} Pontos</span>
+          <span class="navbar-brand" style="font-weight: 900;">{{current}}/{{total}} Poin</span>
       </div>
       <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
       <label class="pull-right">
-        <button style="margin-top: 7px;" type="button" class="btn btn-danger" href="#" class="glyphicon glyphicon-off" ng-click="logoff()" style="color:white">Sair</button>
+        <button style="margin-top: 7px;" type="button" class="btn btn-danger" href="#" class="glyphicon glyphicon-off" ng-click="logoff()" style="color:white">Keluar</button>
         </label>
         <label class="user-info pull-right">
           <b>{{user.name}}</b><br>
-          {{count}} ponto(s) inspecionado(s)
+          {{count}} poin yang telah diperiksa
         </label>
       </div>
     </div>
@@ -19,14 +19,14 @@
     <div class="blog-masthead row">
       <div class="col-md-12">
         <ul class="col-md-4 nav navbar-nav" style="float: left; margin-top: 9px; margin-left: -10px">
-          <a ng-href="#/dashboard" style="color: white">&nbsp;Dashboard</a>&nbsp;&nbsp;&nbsp;&nbsp;<a ng-href="#/supervisor" style="color: white">Pontos</a>
+          <a ng-href="#/dashboard" style="color: white">&nbsp;Dasbor</a>&nbsp;&nbsp;&nbsp;&nbsp;<a ng-href="#/supervisor" style="color: white">Poin</a>
         </ul>
         <div class="col-md-4" ng-show="user" style="float: left">
           <h3><center><span style="color: #FFFFFF"> {{user.campaign._id}} </span></center></h3> 
         </div>  
         <div class="col-md-4 rightNavBar" style="float: right; margin-right: -22px; margin-top: 2px;">
-          <button type="button" class="btn btn-success" href="#" ng-click="downloadCSV()" style="color:white">Baixar CSV</button>
-          <button type="button" class="btn btn-danger" href="#" ng-click="logoff()" style="color:white">Sair</button>
+          <button type="button" class="btn btn-success" href="#" ng-click="downloadCSV()" style="color:white">Unduh CSV</button>
+          <button type="button" class="btn btn-danger" href="#" ng-click="logoff()" style="color:white">Keluar</button>
         </div>
       </div>
     </div>

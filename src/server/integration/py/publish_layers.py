@@ -165,7 +165,7 @@ def processPeriod(tiles, periods, suffix = ''):
 			print(mosaicId + ' exists and is valid.')
 
 client = MongoClient(MONGO_HOST, MONGO_PORT)
-db = client.tvi
+db = client['tvi-indonesia']
 
 gee_multi_credentials(CREDENTIALS_DIR)
 
