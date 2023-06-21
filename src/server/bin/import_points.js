@@ -43,55 +43,41 @@ var getCoordinates = function(geojsonDataStr) {
 	return coordinates;
 }
 
-var getInfoByRegionCmd = function(coordinate) {
-	regions = "SHP/regions.shp";
-	sql = "select COD_MUNICI,BIOMA,UF,MUNICIPIO from regions where ST_INTERSECTS(Geometry,GeomFromText('POINT("+coordinate.X+" "+coordinate.Y+")',4326))"
+const getInfoByRegionCmd = function(coordinate) {
+	regions = "SHP/administrative-boundaries/idn_adm.shp";
+
+	sql = "select json_group_array(json_object( 'countyCode', ADM4_PCODE, 'biome', ADM1_EN, 'state', ADM2_EN, 'county', ADM3_EN )) from idn_adm where ST_INTERSECTS(Geometry,GeomFromText('POINT("+coordinate.X+" "+coordinate.Y+")',4326))"
 	return 'ogrinfo -q -geom=no -dialect sqlite -sql "'+sql+'" '+regions;
 }
 
-var getInfoByRegion = function(coordinate, callback) {
+const getInfoByRegion = function(coordinate, callback) {
 	exec(getInfoByRegionCmd(coordinate), function(error, stdout, stderr) {
-		checkError(error);		
-		
-		var strs = stdout.split("\n");
-		
-		var biome;
-		var uf;
-		var county;
-		var countycode;	  
-		
-		for(var i = 0; i < strs.length; i++) {
-			if(strs[i].match(/BIOMA/g)) {
-				biome = strs[i].slice(18,strs[i].length);
-				biome = biome.trim();
-			}else if(strs[i].match(/UF/g)) {
-				uf = strs[i].slice(15,18);
-				uf = uf.trim();
-			}else if(strs[i].match(/MUNICIPIO/g)) {
-				county = strs[i].slice(22,strs[i].length);
-				county = county.trim();
-			}else if(strs[i].match(/COD_MUNICI/g)) {
-				countycode = strs[i].slice(26,35);
-				countycode = countycode.trim();
-			}
-		}
-
-		var result = {
-			"biome": biome,
-			"uf": uf,
-			"county": county,
-			"countyCode": countycode
-		};
-		
-		callback(result);
+		checkError(error);
+	
+		let object = JSON.parse(stdout.split("=")[1])[0];
+		if(object){
+			callback({
+				"biome": object.biome,
+				"uf": object.state,
+				"county": `${object.countyCode} - ${object.county} - ` ,
+				"countyCode": object.countyCode
+			});
+		}else{
+			callback({
+				"biome":'',
+				"uf": '',
+				"county": '',
+				"countyCode": ''
+			});
+		}		
 	});
 }
-
 var getInfoByTileCmd = function(coordinate) {
-	tiles = "SHP/tiles.shp";
-	sql = "select path,row from tiles where ST_INTERSECTS(Geometry,GeomFromText('POINT("+coordinate.X+" "+coordinate.Y+")',4326))"
+	tiles = "SHP/tiles/tiles.shp";
+	sql = "select PATH, ROW from tiles where ST_INTERSECTS(Geometry,GeomFromText('POINT("+coordinate.X+" "+coordinate.Y+")',4326))"
 	return 'ogrinfo -q -geom=no -dialect sqlite -sql "'+sql+'" '+tiles;
 }
+
 
 var getInfoByTile = function(coordinate, callback) {
 	exec(getInfoByTileCmd(coordinate), function(error, stdout, stderr){	
@@ -103,10 +89,10 @@ var getInfoByTile = function(coordinate, callback) {
 		var path;
 
 		for(var i = 0; i < strs.length; i++){
-			if(strs[i].match(/row/g)){
+			if(strs[i].match(/ROW/g)){
 				row = strs[i].slice(18,21);
 				row = Number(row.trim());
-			}else if(strs[i].match(/path/g)){
+			}else if(strs[i].match(/PATH/g)){
 				path = strs[i].slice(19,22);
 				path = Number(path.trim());
 			}
@@ -138,20 +124,19 @@ var insertCampaing = function(db) {
 			"finalYear": parseInt(finalYear),
 			"password": password,
 			"landUse": [ 
-	        "Pastagem Natural", 
-	        "Vegetação nativa", 
-	        "Pastagem Cultivada", 
-	        "Não observado", 
-	        "Agricultura Anual", 
-	        "Em regeneração", 
-	        "Agricultura Perene", 
-	        "Mosaico de ocupação", 
-	        "Água", 
-	        "Solo Exposto", 
-	        "Cana-de-açucar", 
-	        "Desmatamento", 
-	        "Área urbana", 
-	        "Silvicultura"
+			    "Formasi Hutan",
+		        "Mangrove",
+		        "Sagu",
+		        "Formasi Non Hutan Lainnya",
+		        "Sawah Irigasi",
+		        "Sawit",
+		        "Perkebunan Kayu Pulp",
+		        "Pertanian Lainnya",
+		        "Tambang",
+		        "Non Vegetasi Lainnya",
+		        "Sungai / Danau",
+		        "Tambak",
+		        "Citra Tertutup Awan"
 	    ],
 			"numInspec": parseInt(numInspec)
 		}
