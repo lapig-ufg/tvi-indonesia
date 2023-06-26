@@ -9,7 +9,7 @@ Application.controller('temporalController', function ($rootScope, $scope, $loca
         $scope.size = 3;
         $scope.onSubmission = false;
         $scope.period = 'DRY';
-        $scope.periodo = 'SECO';
+        $scope.periodo = 'KERING';
         $scope.pointEnabled = true;
         $scope.config = {
             initialYear: $rootScope.user.campaign.initialYear,
@@ -79,7 +79,7 @@ Application.controller('temporalController', function ($rootScope, $scope, $loca
 
         $scope.changePeriod = function () {
             $scope.period = ($scope.period == 'DRY') ? 'WET' : 'DRY';
-            $scope.periodo = ($scope.periodo == 'SECO') ? 'CHUVOSO' : 'SECO';
+            $scope.periodo = ($scope.periodo == 'KERING') ? 'BERHUJAN' : 'KERING';
             generateMaps();
         }
 
@@ -224,7 +224,7 @@ Application.controller('temporalController', function ($rootScope, $scope, $loca
                         x: dry,
                         y: trace2NDVI(data.values, dry),
                         text: dry,
-                        name: 'Landsat (Seco)',
+                        name: 'Landsat (KERING)',
                         hoverinfo: "none",
                         mode: 'markers',
                         marker: {
@@ -237,7 +237,7 @@ Application.controller('temporalController', function ($rootScope, $scope, $loca
                         x: wet,
                         y: trace2NDVI(data.values, wet),
                         text: wet,
-                        name: 'Landsat (Chuvoso)',
+                        name: 'Landsat (BERHUJAN)',
                         hoverinfo: "none",
                         mode: 'markers',
                         marker: {
@@ -278,7 +278,7 @@ Application.controller('temporalController', function ($rootScope, $scope, $loca
                         x: precData,
                         y: precValue,
                         text: precText,
-                        name: 'Precipitação',
+                        name: 'Curah hujan',
                         hoverinfo: 'text+y',
                         opacity: 0.5,
                         mode: 'markers',
@@ -315,7 +315,7 @@ Application.controller('temporalController', function ($rootScope, $scope, $loca
                             rangemode: "nonnegative"
                         },
                         yaxis5: {
-                            title: 'Precipitação',
+                            title: 'Curah hujan',
                             fixedrange: true,
                             overlaying: 'y',
                             side: 'right'

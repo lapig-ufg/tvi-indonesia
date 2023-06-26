@@ -101,16 +101,9 @@
                     <div style="padding-left: 1em"><h4>Informasi titik {{ point.originalIndex }}:</h4></div>
                     <div class="tab">
                         <p>
-                            <b ng-hide="isChaco || isRaisg">Bioma: {{point.biome}}</b>
-                            <b ng-show="isChaco">Daerah: {{point.county}}</b>
-                            <b ng-show="isRaisg">Negara: {{point.county}} </b>
-                        </p>
-                    </div>
-                    <div class="tab">
-                        <p>
-                            <b ng-hide="isChaco || isRaisg">Kabupaten: {{point.county}} {{point.uf}}</b>
-                            <b ng-show="isChaco">Bioma: {{point.biome}}</b>
-                            <b ng-show="isRaisg">Bioma: {{point.biome}}</b>
+                            <b >Bioma: {{point.biome}}</b>
+                            <b >Wilayah: {{point.county}}</b>
+                            <b >Negara: {{point.county}} </b>
                         </p>
                     </div>
                     <div class="tab"><p><b>Koordinat:<br></b> {{point.lat | number:4}}, {{point.lon | number:4}} - lat-lon <br></b> {{point.lon | number:4}}, {{point.lat | number:4}} - lon-lat </p>
@@ -141,7 +134,7 @@
                     <table class="table table-condensed table-users">
                         <thead ng-hide="point.inspection == 0" style="font-weight: bold;">
                         <tr>
-                            <td>User</td>
+                            <td>Pengguna</td>
                         </tr>
                         </thead>
                         <tbody ng-hide="point.inspection == 0">
@@ -155,11 +148,11 @@
                         </tbody>
                         <tfoot ng-if="objConsolidated.length < point.inspection.length"
                                style="font-size: 14px; font-weight: bold;">
-                        <td ng-hide='dataTab[0].checked'>Classe Consolidada</td>
+                        <td ng-hide='dataTab[0].checked'>Kelas Konsolidasi</td>
                         </tfoot>
                         <tfoot ng-if="objConsolidated.length >= point.inspection.length"
                                style="font-size: 14px; font-weight: bold;">
-                        <td ng-show='dataTab[0].checked'>Classe Consolidada</td>
+                        <td ng-show='dataTab[0].checked'>Kelas Konsolidasi</td>
                         </tfoot>
                     </table>
                 </div>
@@ -206,9 +199,8 @@
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="top: 400px;">
             <div class="row">
-                <span class="pull-left" style="font-weight: bold; font-size: 18px; margin:5px 5px 5px 5px;">Imagens Landsat  <span
-                        ng-hide="isRaisg" class="titleMaps">RGB(NIR,SWIR,RED)</span>  <span ng-show="isRaisg"
-                                                                                            class="titleMaps">RGB(SWIR,NIR,RED)</span></span>
+                <span class="pull-left" style="font-weight: bold; font-size: 18px; margin:5px 5px 5px 5px;">Gambar Landsat<span ng-hide="isRaisg" class="titleMaps">RGB(NIR,SWIR,RED)</span>
+                <span ng-show="isRaisg" class="titleMaps">RGB(SWIR,NIR,RED)</span></span>
                 <br><br>
                 <fieldset>
                     <div ng-repeat="map in maps"
@@ -224,11 +216,11 @@
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 bold" style="margin-top: 420px">
             <fieldset ng-show="showChartsLandsat">
-                <span style="font-size: 18px; font-weight: bold;">Série temporal LANDSAT:</span>
+                <span style="font-size: 18px; font-weight: bold;">Seri waktu LANDSAT:</span>
                 <div id="LANDSAT"></div>
             </fieldset>
             <fieldset >
-                <span ng-show="showCharts" style="font-size: 18px; font-weight: bold;">Série temporal MODIS:</span>
+                <span ng-show="showCharts" style="font-size: 18px; font-weight: bold;">Seri waktu MODIS:</span>
                 <div id="NDVI"></div>
             </fieldset>
 <!--            <ndvi></ndvi>-->

@@ -10,7 +10,7 @@ Application.controller('supervisorController', function ($rootScope, $scope, $lo
         $scope.size = 4;
         $scope.onSubmission = false;
         $scope.period = 'DRY';
-        $scope.periodo = 'SECO';
+        $scope.periodo = 'KERING';
         $scope.pointEnabled = true;
         $scope.config = {
             initialYear: $rootScope.user.campaign.initialYear,
@@ -23,13 +23,13 @@ Application.controller('supervisorController', function ($rootScope, $scope, $lo
         $scope.isRaisg = ($rootScope.user.campaign._id.indexOf('samples') != -1 || $rootScope.user.campaign._id.indexOf('raisg') != -1);
 
         $scope.dataTab = [
-            {"name": "Usuários", "checked": true},
-            {"name": "Pontos", "checked": false}
+            {"name": "Pengguna", "checked": true},
+            {"name": "Poin", "checked": false}
         ];
 
         $scope.dataTimePoints = [
-            {"data": "Tempo de inspeção do ponto (s)"},
-            {"data": "Tempo médio de todos os pontos (s)"}
+            {"data": "Waktu Inspeksi Titik"},
+            {"data": "Rata-rata waktu dari semua titik"}
         ];
 
         $scope.sortTimeInspection = function (element) {
@@ -87,7 +87,7 @@ Application.controller('supervisorController', function ($rootScope, $scope, $lo
 
             $scope.newValue = !$scope.newValue;
             $scope.period = ($scope.period == 'DRY') ? 'WET' : 'DRY';
-            $scope.periodo = ($scope.periodo == 'SECO') ? 'CHUVOSO' : 'SECO';
+            $scope.periodo = ($scope.periodo == 'KERING') ? 'BERHUJAN' : 'KERING';
             generateMaps();
         }
 
@@ -230,7 +230,7 @@ Application.controller('supervisorController', function ($rootScope, $scope, $lo
                             x: dry,
                             y: trace2NDVI(data.values, dry),
                             text: dry,
-                            name: 'Landsat (Seco)',
+                            name: 'Landsat (KERING)',
                             hoverinfo: "none",
                             mode: 'markers',
                             marker: {
@@ -243,7 +243,7 @@ Application.controller('supervisorController', function ($rootScope, $scope, $lo
                             x: wet,
                             y: trace2NDVI(data.values, wet),
                             text: wet,
-                            name: 'Landsat (Chuvoso)',
+                            name: 'Landsat (BERHUJAN)',
                             hoverinfo: "none",
                             mode: 'markers',
                             marker: {
@@ -284,7 +284,7 @@ Application.controller('supervisorController', function ($rootScope, $scope, $lo
                             x: precData,
                             y: precValue,
                             text: precText,
-                            name: 'Precipitação',
+                            name: 'Curah hujan',
                             hoverinfo: 'text+y',
                             opacity: 0.5,
                             mode: 'markers',
@@ -321,7 +321,7 @@ Application.controller('supervisorController', function ($rootScope, $scope, $lo
                                 rangemode: "nonnegative"
                             },
                             yaxis5: {
-                                title: 'Precipitação',
+                                title: 'Curah hujan',
                                 fixedrange: true,
                                 overlaying: 'y',
                                 side: 'right'
@@ -537,7 +537,7 @@ Application.controller('supervisorController', function ($rootScope, $scope, $lo
                     for (var i = 0; i < $scope.objConsolidated.length; i++) {
                         if ($scope.objConsolidated[i] == 'Não consolidado') {
                             if (flagError)
-                                window.alert("Falha na operação, preencha todos os campos");
+                                window.alert("Gagal dalam operasi, lengkapi semua bidang.");
                             flagError = false;
 
                         } else {
@@ -657,7 +657,7 @@ Application.controller('supervisorController', function ($rootScope, $scope, $lo
                 "campaign": $rootScope.user.campaign._id
             }, function (data) {
                 $scope.showloading = false;
-                $window.alert(data ? `Pontos corrigidos: ${data}` : 'Companha sem problemas com as inspeções.')
+                $window.alert(data ? `Diperbaiki: Titik-titik ${data}` : 'Dengan perusahaan tanpa masalah dengan inspeksi.')
             });
         }
 

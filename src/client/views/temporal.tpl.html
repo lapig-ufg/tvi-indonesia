@@ -4,19 +4,14 @@ $rootScope.user.campaign.numInspec
         <div ng-hide="isObjectEmpty(point) && pointLoaded" class="col-fixed-310">
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    <legend>Informação de localização</legend>
+                    <legend>Informasi titik</legend>
                     <p>
                         <b ng-hide="isChaco || isRaisg">Bioma: {{point.biome}}</b>
-                        <b ng-show="isChaco">Região: {{point.county}}</b>
-                        <b ng-show="isRaisg">País: {{point.county}}</b>
+                        <b ng-show="isChaco">Wilayah: {{point.county}}</b>
+                        <b ng-show="isRaisg">negara: {{point.county}}</b>
 
                     </p>
-                    <p>
-                        <b ng-hide="isChaco || isRaisg">Municipio: {{point.county}} {{point.uf}}</b>
-                        <b ng-show="isChaco">Carta: {{point.biome}}</b>
-                        <b ng-show="isRaisg">Bioma: {{point.biome}}</b>
-                    </p>
-                    <p><b>Coordenadas:<br></b> {{point.lat | number:4}}, {{point.lon | number:4}} - lat-lon <br></b> {{point.lon | number:4}}, {{point.lat | number:4}} - lon-lat </p>
+                    <p><b>Koordinat:<br></b> {{point.lat | number:4}}, {{point.lon | number:4}} - lat-lon <br></b> {{point.lon | number:4}}, {{point.lat | number:4}} - lon-lat </p>
                     <fieldset>
                         <legend>Uso e Cobertura da Terra:</legend>
                         <input style="margin-top: 0px;" ng-click="changePeriod()" type="button" class="btn btn-warning"
@@ -29,26 +24,26 @@ $rootScope.user.campaign.numInspec
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 form-lulc-panel">
                     <form class="form-inline form-lclu" ng-repeat="answer in answers">
-                        <label class="form-label-lclu" style="margin-right: 24px;">Entre</label><select
+                        <label class="form-label-lclu" style="margin-right: 24px;">Antara</label><select
                             style="-webkit-appearance: none;" ng-disabled='answers.length >= ($index + 1)'
                             class="form-inline form-control form-year-lclu" ng-model="answer.initialYear"
                             ng-options="x for x in optionYears[$index]"></select>
-                        <label class="form-label-lclu">e</label><select ng-disabled='answers.length != ($index + 1)'
+                        <label class="form-label-lclu">dan</label><select ng-disabled='answers.length != ($index + 1)'
                                                                         class="form-inline form-control form-year-lclu"
                                                                         ng-model="answer.finalYear"
                                                                         ng-change="formPlus()"
                                                                         ng-options="y for y in optionYears[$index]"></select>
-                        <br><label style="margin: 10px;">Classe: </label><select style="width: 200px;"
+                        <br><label style="margin: 10px;">Kelas: </label><select style="width: 200px;"
                                                                                  class="form-control"
                                                                                  ng-model="answer.landUse"
                                                                                  ng-options="z for z in config.landUse"
                                                                                  ng-click="form-plus"></select>
-                        <label style="margin: 10px;">Pixel de Borda: <input type="checkbox"
+                        <label style="margin: 10px;">Pixel Tepi:<input type="checkbox"
                                                                             ng-model="answer.pixelBorder"></label>
                     </form>
                     <input style="margin-left: 0px;" type="button" class="btn pull-left btn-success"
                            ng-disabled="answers[answers.length - 1].finalYear != config.finalYear || onSubmission"
-                           ng-click="submitForm()" value="Enviar">
+                           ng-click="submitForm()" value="Kirim">
                     <input style="margin-right: 23px;" type="button" class="btn btn-danger pull-right"
                            ng-click="formSubtraction()" ng-disabled="answers.length == 1" value="-">
                     <div class="pull-right button-align">
@@ -61,9 +56,9 @@ $rootScope.user.campaign.numInspec
              class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-offset-310">
             <div class="row">
                 <fieldset>
-                    <legend>Imagens Landsat <span ng-hide="isRaisg" style=" font-size: 14px; color: gray;">RBG(NIR,SWIR,RED)</span><span
+                    <legend>Gambar Landsat<span ng-hide="isRaisg" style=" font-size: 14px; color: gray;">RBG(NIR,SWIR,RED)</span><span
                             ng-show="isRaisg" style=" font-size: 14px; color: gray;">RBG(SWIR,NIR,RED)</span><span
-                            style=" font-size: 13px; color: gray; margin-top: 10px;" class="pull-right">Clique no mapa para desabilitar a localização do ponto</span>
+                            style=" font-size: 13px; color: gray; margin-top: 10px;" class="pull-right">Klik pada peta untuk menonaktifkan lokasi titik.</span>
                     </legend>
                     <div ng-repeat="map in maps"
                          ng-class="(size == 3) ? 'ee-mapbox col-xs-3 col-sm-3 col-md-3 col-lg-3' : 'ee-mapbox col-xs-2 col-sm-2 col-md-2 col-lg-2'"
@@ -86,11 +81,11 @@ $rootScope.user.campaign.numInspec
             <!--  	<div class="row" ng-hide="isChaco  || isRaisg">-->
             <div class="row">
                 <fieldset  ng-show="showChartsLandsat" >
-                    <span style="font-size: 18px; font-weight: bold;">Série temporal LANDSAT:</span>
+                    <span style="font-size: 18px; font-weight: bold;">Seri waktu LANDSAT:</span>
                     <div id="LANDSAT"></div>
                 </fieldset>
                 <fieldset>
-                    <div style="margin-bottom: 0px"><h4>Série temporal MODIS:</h4></div>
+                    <div style="margin-bottom: 0px"><h4>Seri waktu MODIS:</h4></div>
                     <div id="NDVI"></div>
                 </fieldset>
             </div>

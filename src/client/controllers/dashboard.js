@@ -42,7 +42,7 @@ Application.controller('dashboardController', function($rootScope, $scope, $loca
 			  	fixedrange: true,
 			    gridwidth: 2
 		  	},
-			  title: 'Número de pontos inspecionados',
+			  title: 'Jumlah titik yang diperiksa',
 		  	titlefont: {
 		  		size: 18
 		  	}
@@ -63,14 +63,14 @@ Application.controller('dashboardController', function($rootScope, $scope, $loca
 			  marker: {
 			  	colors: ['rgba(44,160,44,0.9)','rgba(221,221,42,0.9)','rgba(237,19,21,0.85)']
 			  },
-			  labels: ['Inspeções completas', 'Inspeções incompletas', 'Sem inspeções'],
+			  labels: ['Inspeksi lengkap', 'Inspeksi yang tidak lengkap', 'Tanpa inspeksi'],
 			  type: 'pie',
 			  hoverinfo: 'label+value'
 			}];
 
 			var layout = {
 			  height: 500,
-			  title: 'Número de inspeções',
+			  title: 'Jumlah inspeksi',
 		  	titlefont: {
 		  		size: 18
 		  	}
@@ -115,7 +115,7 @@ Application.controller('dashboardController', function($rootScope, $scope, $loca
 			  	fixedrange: true,
 			    gridwidth: 2
 			  },
-			  title: 'Média de tempo por ponto inspecionado',
+			  title: 'Rata-rata waktu per titik yang diperiksa',
 		  	titlefont: {
 		  		size: 18
 		  	}
@@ -136,14 +136,14 @@ Application.controller('dashboardController', function($rootScope, $scope, $loca
 			  marker: {
 			  	colors: ['rgba(29,84,54,0.9)','rgba(208,201,26,0.9)']
 			  },
-			  labels: ['Pontos com cache', 'Pontos sem cache'],
+			  labels: ['Poin dengan cache', 'Poin tanpa cache'],
 			  type: 'pie',
 			  hoverinfo: 'label+value'
 			}];
 
 			var layout = {
 			  height: 500,
-			  title: 'Total de pontos armazenados',
+			  title: 'Total poin yang disimpan',
 		  	titlefont: {
 		  		size: 18
 		  	}
@@ -200,7 +200,7 @@ Application.controller('dashboardController', function($rootScope, $scope, $loca
 			  marker: {
 			  	color: 'rgba(32,128,72,0.8)'
 			  },
-			  name: 'Pontos com concordância',
+			  name: 'Titik-titik kesepakatan',
 			  type: 'bar',
 		 	  orientation: 'h',
 			  hoverinfo: 'x'
@@ -212,7 +212,7 @@ Application.controller('dashboardController', function($rootScope, $scope, $loca
 			  marker: {
 			  	color: 'rgba(65,105,225,0.8)'
 			  },
-			  name: 'Pontos alterados',
+			  name: 'Ditambahkan poin',
 			  type: 'bar',
 		 	  orientation: 'h',
 			  hoverinfo: 'x'
@@ -224,7 +224,7 @@ Application.controller('dashboardController', function($rootScope, $scope, $loca
 			  marker: {
 			  	color: 'rgba(255,127,14,0.8)'
 			  },
-			  name: 'Pontos sem concordância',
+			  name: 'Ditambahkan tanpa persetujuan',
 			  type: 'bar',
 			  orientation: 'h',
 			  hoverinfo: 'x'
@@ -244,7 +244,7 @@ Application.controller('dashboardController', function($rootScope, $scope, $loca
 			  	fixedrange: true,
 			    gridwidth: 2
 		  	},
-			  title: 'Número de pontos com concordância',
+			  title: 'Jumlah titik dengan kesepakatan.',
 		  	titlefont: {
 		  		size: 18
 		  	},
@@ -292,7 +292,7 @@ Application.controller('dashboardController', function($rootScope, $scope, $loca
 			  	fixedrange: true,
 			    gridwidth: 2
 		  	},
-			  title: 'Média de votos por cobertura em %',
+			  title: 'Rata-rata suara per cakupan dalam %',
 		  	titlefont: {
 		  		size: 18
 		  	}
