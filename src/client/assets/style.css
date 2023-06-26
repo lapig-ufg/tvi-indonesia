@@ -101,13 +101,13 @@ body {
 
 @media (min-width: 1910px) {
   .rightNavBar {
-    padding-left: 453px !important;
+    padding-left: 415px !important;
   }
 }
 
 @media (min-width: 2550px) {
   .rightNavBar {
-    padding-left: 665px !important;
+    padding-left: 623px !important;
   }
 }
 
@@ -241,11 +241,11 @@ legend.scheduler-border {
   padding-top: 5px;
   padding-bottom: 5px;
   background-color: #f1f1f1;
-  width: 280px;
+  /*width: 280px;*/
 }
 
 .form-label-lclu {
-  margin: 10px;
+  margin: 4px;
 }
 
 .form-year-lclu {

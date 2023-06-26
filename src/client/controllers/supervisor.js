@@ -491,16 +491,16 @@ Application.controller('supervisorController', function ($rootScope, $scope, $lo
                 }
             }
 
-            if ($scope.selectedLandUse && $scope.selectedLandUse != 'Todos')
+            if ($scope.selectedLandUse && $scope.selectedLandUse != 'Semua')
                 filter["landUse"] = $scope.selectedLandUse;
 
-            if ($scope.selectUserNames && $scope.selectUserNames != 'Todos')
+            if ($scope.selectUserNames && $scope.selectUserNames != 'Semua')
                 filter["userName"] = $scope.selectUserNames;
 
-            if ($scope.selectBiomes && $scope.selectBiomes != 'Todos')
+            if ($scope.selectBiomes && $scope.selectBiomes != 'Semua')
                 filter["biome"] = $scope.selectBiomes;
 
-            if ($scope.selectUf && $scope.selectUf != 'Todos')
+            if ($scope.selectUf && $scope.selectUf != 'Semua')
                 filter["uf"] = $scope.selectUf;
 
             if ($scope.typeSort == 'timeInspection') {
@@ -577,10 +577,10 @@ Application.controller('supervisorController', function ($rootScope, $scope, $lo
 
         var landUseFilter = function (filter) {
             requester._get('points/landUses', filter, function (landUses) {
-                landUses.unshift('Todos');
+                landUses.unshift('Semua');
 
                 if (filter.landUse == undefined)
-                    filter.landUse = 'Todos';
+                    filter.landUse = 'Semua';
 
                 $scope.selectedLandUse = filter.landUse;
                 $scope.landUses = landUses;
@@ -589,10 +589,10 @@ Application.controller('supervisorController', function ($rootScope, $scope, $lo
 
         var usersFilter = function (filter) {
             requester._get('points/users', filter, function (userNames) {
-                userNames.unshift('Todos');
+                userNames.unshift('Semua');
 
                 if (filter.userName == undefined)
-                    filter.userName = 'Todos';
+                    filter.userName = 'Semua';
 
                 $scope.selectUserNames = filter.userName;
                 $scope.userNames = userNames;
@@ -601,10 +601,10 @@ Application.controller('supervisorController', function ($rootScope, $scope, $lo
 
         var biomeFilter = function (filter) {
             requester._get('points/biome', filter, function (biomes) {
-                biomes.unshift('Todos');
+                biomes.unshift('Semua');
 
                 if (filter.biome == undefined)
-                    filter.biome = 'Todos';
+                    filter.biome = 'Semua';
 
                 $scope.selectBiomes = filter.biome;
                 $scope.biomes = biomes;
@@ -613,10 +613,10 @@ Application.controller('supervisorController', function ($rootScope, $scope, $lo
 
         var ufFilter = function (filter) {
             requester._get('points/uf', filter, function (stateUF) {
-                stateUF.unshift('Todos');
+                stateUF.unshift('Semua');
 
                 if (filter.uf == undefined)
-                    filter.uf = 'Todos';
+                    filter.uf = 'Semua';
 
                 $scope.selectUf = filter.uf;
                 $scope.stateUF = stateUF;

@@ -344,7 +344,7 @@ module.exports = function (app) {
                     }
 
                     point.dataPointTime.push({
-                        'name': 'Tempo médio',
+                        'name': 'Waktu rata-rata',
                         'totalPointTime': pointTimeTotal,
                         'meanPointTime': meanPointTotal
                     })

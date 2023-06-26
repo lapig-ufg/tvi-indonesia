@@ -13,9 +13,9 @@ $rootScope.user.campaign.numInspec
                     </p>
                     <p><b>Koordinat:<br></b> {{point.lat | number:4}}, {{point.lon | number:4}} - lat-lon <br></b> {{point.lon | number:4}}, {{point.lat | number:4}} - lon-lat </p>
                     <fieldset>
-                        <legend>Uso e Cobertura da Terra:</legend>
+                        <legend>Penggunaan dan Tutupan Tanah:</legend>
                         <input style="margin-top: 0px;" ng-click="changePeriod()" type="button" class="btn btn-warning"
-                               value="Alterar Período">
+                               value="Mengubah Periode">
                         <input style="margin-top: 0px;" ng-click="getKml()" type="button" class="btn btn-success"
                                value="Google Earth">
                     </fieldset>
@@ -56,8 +56,8 @@ $rootScope.user.campaign.numInspec
              class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-offset-310">
             <div class="row">
                 <fieldset>
-                    <legend>Gambar Landsat<span ng-hide="isRaisg" style=" font-size: 14px; color: gray;">RBG(NIR,SWIR,RED)</span><span
-                            ng-show="isRaisg" style=" font-size: 14px; color: gray;">RBG(SWIR,NIR,RED)</span><span
+                    <legend>Gambar Landsat <span ng-hide="isRaisg" style=" font-size: 14px; color: gray;">RBG(SWIR,NIR,RED)</span>
+                        <span
                             style=" font-size: 13px; color: gray; margin-top: 10px;" class="pull-right">Klik pada peta untuk menonaktifkan lokasi titik.</span>
                     </legend>
                     <div ng-repeat="map in maps"
