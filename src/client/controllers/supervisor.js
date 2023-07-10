@@ -23,8 +23,8 @@ Application.controller('supervisorController', function ($rootScope, $scope, $lo
         $scope.isRaisg = ($rootScope.user.campaign._id.indexOf('samples') != -1 || $rootScope.user.campaign._id.indexOf('raisg') != -1);
 
         $scope.dataTab = [
-            {"name": "Pengguna", "checked": true},
-            {"name": "Poin", "checked": false}
+            {"name": "Inspektur", "checked": true},
+            {"name": "Titik", "checked": false}
         ];
 
         $scope.dataTimePoints = [
@@ -87,7 +87,7 @@ Application.controller('supervisorController', function ($rootScope, $scope, $lo
 
             $scope.newValue = !$scope.newValue;
             $scope.period = ($scope.period == 'DRY') ? 'WET' : 'DRY';
-            $scope.periodo = ($scope.periodo == 'KERING') ? 'BERHUJAN' : 'KERING';
+            $scope.periodo = ($scope.periodo == 'KERING') ? 'BASAH' : 'KERING';
             generateMaps();
         }
 
@@ -243,7 +243,7 @@ Application.controller('supervisorController', function ($rootScope, $scope, $lo
                             x: wet,
                             y: trace2NDVI(data.values, wet),
                             text: wet,
-                            name: 'Landsat (BERHUJAN)',
+                            name: 'Landsat (BASAH)',
                             hoverinfo: "none",
                             mode: 'markers',
                             marker: {

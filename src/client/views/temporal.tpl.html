@@ -6,10 +6,7 @@ $rootScope.user.campaign.numInspec
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <legend>Informasi titik</legend>
                     <p>
-                        <b ng-hide="isChaco || isRaisg">Wilayah: {{point.biome}}</b>
-                        <b ng-show="isChaco">Wilayah: {{point.county}}</b>
-                        <b ng-show="isRaisg">negara: {{point.county}}</b>
-
+                        <b>Provinsi: {{point.county}}</b>
                     </p>
                     <p><b>Koordinat:<br></b> {{point.lat | number:4}}, {{point.lon | number:4}} - lat-lon <br></b> {{point.lon | number:4}}, {{point.lat | number:4}} - lon-lat </p>
                     <fieldset>
@@ -56,7 +53,7 @@ $rootScope.user.campaign.numInspec
              class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-offset-310">
             <div class="row">
                 <fieldset>
-                    <legend>Komposit Landsat<span ng-hide="isRaisg" style=" font-size: 14px; color: gray;">RBG(SWIR,NIR,RED)</span>
+                    <legend>Komposit Landsat<span ng-hide="isRaisg" style=" font-size: 14px; color: gray;"> RBG(SWIR,NIR,RED)</span>
                         <span
                             style=" font-size: 13px; color: gray; margin-top: 10px;" class="pull-right">Klik pada peta untuk menonaktifkan lokasi titik.</span>
                     </legend>

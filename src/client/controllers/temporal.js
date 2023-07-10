@@ -79,7 +79,7 @@ Application.controller('temporalController', function ($rootScope, $scope, $loca
 
         $scope.changePeriod = function () {
             $scope.period = ($scope.period == 'DRY') ? 'WET' : 'DRY';
-            $scope.periodo = ($scope.periodo == 'KERING') ? 'BERHUJAN' : 'KERING';
+            $scope.periodo = ($scope.periodo == 'KERING') ? 'BASAH' : 'KERING';
             generateMaps();
         }
 
@@ -237,7 +237,7 @@ Application.controller('temporalController', function ($rootScope, $scope, $loca
                         x: wet,
                         y: trace2NDVI(data.values, wet),
                         text: wet,
-                        name: 'Landsat (BERHUJAN)',
+                        name: 'Landsat (BASAH)',
                         hoverinfo: "none",
                         mode: 'markers',
                         marker: {

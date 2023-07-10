@@ -63,7 +63,7 @@ Application.controller('dashboardController', function($rootScope, $scope, $loca
 			  marker: {
 			  	colors: ['rgba(44,160,44,0.9)','rgba(221,221,42,0.9)','rgba(237,19,21,0.85)']
 			  },
-			  labels: ['Inspeksi lengkap', 'Inspeksi yang tidak lengkap', 'Tanpa inspeksi'],
+			  labels: ['Inspeksi lengkap', 'Inspeksi belum lengkap', 'Belum Inspeksi'],
 			  type: 'pie',
 			  hoverinfo: 'label+value'
 			}];
@@ -115,7 +115,7 @@ Application.controller('dashboardController', function($rootScope, $scope, $loca
 			  	fixedrange: true,
 			    gridwidth: 2
 			  },
-			  title: 'Rata-rata waktu per titik yang diperiksa',
+			  title: 'Rerata waktu inspeksi',
 		  	titlefont: {
 		  		size: 18
 		  	}
@@ -136,14 +136,14 @@ Application.controller('dashboardController', function($rootScope, $scope, $loca
 			  marker: {
 			  	colors: ['rgba(29,84,54,0.9)','rgba(208,201,26,0.9)']
 			  },
-			  labels: ['Poin dengan cache', 'Poin tanpa cache'],
+			  labels: ['Titik dengan cache', 'Titik tanpa cache'],
 			  type: 'pie',
 			  hoverinfo: 'label+value'
 			}];
 
 			var layout = {
 			  height: 500,
-			  title: 'Total poin yang disimpan',
+			  title: 'Total titik disimpan',
 		  	titlefont: {
 		  		size: 18
 		  	}

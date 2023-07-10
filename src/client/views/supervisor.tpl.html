@@ -68,7 +68,7 @@
                         </div>
                         <div class="form-group">
                             <label class="col-sm-1 col-form-label"
-                                   style="font-size: 15px; width: auto;">Pengguna:</label>
+                                   style="font-size: 15px; width: auto;">Inspektur:</label>
                             <div class="col-sm-3" style="width: auto;">
                                 <select ng-change="submit(1)" ng-disabled="modeEdit" class="form-control"
                                         ng-model="selectUserNames"
@@ -77,9 +77,9 @@
                         </div>
                         <div class="form-group">
                             <label ng-hide="isChaco" class="col-sm-1 col-form-label"
-                                   style="font-size: 15px; width: auto;">Wilayah:</label>
+                                   style="font-size: 15px; width: auto;">Provinsi:</label>
                             <label ng-show="isChaco" class="col-sm-1 col-form-label"
-                                   style="font-size: 15px; width: auto;">Daerah:</label>
+                                   style="font-size: 15px; width: auto;">ID Lokasi:</label>
                             <div class="col-sm-3" style="width: auto;">
                                 <select ng-change="submit(1)" ng-disabled="modeEdit" class="form-control"
                                         ng-model="selectBiomes" ng-options="biome for biome in biomes"></select>
@@ -87,7 +87,7 @@
                         </div>
                         <div ng-hide="isChaco" class="form-group">
                             <label class="col-sm-1 col-form-label"
-                                   style="font-size: 15px; width: auto;">Negara Bagian:</label>
+                                   style="font-size: 15px; width: auto;">Kabupaten/Kota:</label>
                             <div class="col-sm-3" style="width: auto;">
                                 <select ng-change="submit(1)" ng-disabled="modeEdit" class="form-control"
                                         ng-model="selectUf" ng-options="uf for uf in stateUF"></select>
@@ -102,16 +102,15 @@
                     <div class="tab">
                         <p>
                         <p >Wilayah:  <b>{{point.biome}}</b></p>
-<!--                            <p >Wilayah: {{point.county}}</p>-->
-                            <p >Daerah: <b>{{point.county}} </b></p>
+                            <p >ID Lokasi: <b>{{point.county}} </b></p>
                         </p>
                     </div>
                     <div class="tab"><p><b>Koordinat:<br></b> {{point.lat | number:4}}, {{point.lon | number:4}} - lat-lon <br></b> {{point.lon | number:4}}, {{point.lat | number:4}} - lon-lat </p>
                     </div>
-                    <div class="tab"><p><b>Waktu Inspeksi Titik:</b> {{timeInspectionPoint}} seg.</p></div>
+                    <div class="tab"><p><b>Durasi Inspeksi:</b> {{timeInspectionPoint}} detik.</p></div>
                     <div style="padding-left: 1em"><h4>Alat Visualisasi:</h4></div>
                     <input style="margin-top: 0px;" ng-click="changePeriod()" type="button" class="btn btn-warning"
-                           value="Mengubah Periode">
+                           value="Periode Musim">
                     <input style="margin-top: 0px;" ng-click="getKml()" type="button" class="btn btn-success"
                            value="Google Earth">
                     <input ng-hide="buttonEdit == true" style="margin-top: 0px;" ng-click="editClass()" type="button"
@@ -134,7 +133,7 @@
                     <table class="table table-condensed table-users">
                         <thead ng-hide="point.inspection == 0" style="font-weight: bold;">
                         <tr>
-                            <td>Pengguna</td>
+                            <td>Inspektur</td>
                         </tr>
                         </thead>
                         <tbody ng-hide="point.inspection == 0">
@@ -199,7 +198,7 @@
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="top: 400px;">
             <div class="row">
-                <span class="pull-left" style="font-weight: bold; font-size: 18px; margin:5px 5px 5px 5px;">Gambar Landsat <span ng-hide="isRaisg" class="titleMaps"> RGB(SWIR,NIR,RED)</span>
+                <span class="pull-left" style="font-weight: bold; font-size: 18px; margin:5px 5px 5px 5px;">Komposit Landsat <span ng-hide="isRaisg" class="titleMaps"> RGB(SWIR,NIR,RED)</span>
                 <br><br>
                 <fieldset>
                     <div ng-repeat="map in maps"
