@@ -82,7 +82,7 @@ Application
               minZoom: $scope.zoom,
               maxZoom: $scope.zoom + 2,
               controls: [
-                new L.control.scale({ metric:true, imperial: false })
+                new L.control.scale({ metric: true, imperial: false })
               ]
           });
           
@@ -95,9 +95,16 @@ Application
               $scope.markerInMap = true;
             }
           });
-
-          L.control.scale({ metric:true, imperial: false }).addTo($scope.map);
-
+          L.circle(
+              [$scope.lat, $scope.lon],
+              {
+                radius: 300,
+                color: '#29e7e4',
+                weight: 2,
+                fill: false
+              }
+          ).addTo($scope.map);
+          L.control.scale({ metric: true, imperial: false }).addTo($scope.map);
         });
       }
     }

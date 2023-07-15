@@ -76,10 +76,8 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label ng-hide="isChaco" class="col-sm-1 col-form-label"
+                            <label class="col-sm-1 col-form-label"
                                    style="font-size: 15px; width: auto;">Provinsi:</label>
-                            <label ng-show="isChaco" class="col-sm-1 col-form-label"
-                                   style="font-size: 15px; width: auto;">ID Lokasi:</label>
                             <div class="col-sm-3" style="width: auto;">
                                 <select ng-change="submit(1)" ng-disabled="modeEdit" class="form-control"
                                         ng-model="selectBiomes" ng-options="biome for biome in biomes"></select>
@@ -100,10 +98,9 @@
                 <div class="borderPoint" style="margin-bottom: 1px">
                     <div style="padding-left: 1em"><h4>Informasi titik {{ point.originalIndex }}:</h4></div>
                     <div class="tab">
-                        <p>
-                        <p >Wilayah:  <b>{{point.biome}}</b></p>
-                            <p >ID Lokasi: <b>{{point.county}} </b></p>
-                        </p>
+                        <p>Kabupaten/Kota: <b>{{point.uf}}</b></p>
+                        <p>Provinsi: <b>{{point.biome}}</b></p>
+                        <p>ID Lokasi: <b>{{point.county}} </b></p>
                     </div>
                     <div class="tab"><p><b>Koordinat:<br></b> {{point.lat | number:4}}, {{point.lon | number:4}} - lat-lon <br></b> {{point.lon | number:4}}, {{point.lat | number:4}} - lon-lat </p>
                     </div>
@@ -203,7 +200,7 @@
                 <fieldset>
                     <div ng-repeat="map in maps"
                          ng-class="(size == 4) ? 'ee-mapbox col-xs-12 col-sm-6 col-md-3 col-lg-3' : 'ee-mapbox col-xs-12 col-sm-6 col-md-2 col-lg-2'"
-                         style="border: 1px solid black; padding-left: 0px; padding-right: 0px">
+                         style="border: 1px solid black; padding-left: 0px; padding-right: 0px; font-size: 13px;">
                         <span style="margin-left: 5px; font-weight: bold;">{{map.date | date: 'dd/MM/yyyy'}}</span><span
                             class="pull-right" style="margin-right: 5px; font-weight: bold;">{{periodo}}</span>
                         <inspection-map lon="point.lon" lat="point.lat" bounds="point.bounds" zoom="config.zoomLevel"
