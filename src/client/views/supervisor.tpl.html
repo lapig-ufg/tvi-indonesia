@@ -6,7 +6,7 @@
 
 <div class="container-fluid" style="overflow: hidden;" >
     <div class="row">
-        <div class="row navbar-fixed-top" style="background: white; top: 40px; padding-top: 3px" ;>
+        <div class="row navbar-fixed-top" style="background: white; top: 40px; padding-top: 3px; border: 1px solid black; padding-bottom: 2px;">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <script>
                     function maxLengthCheck(object) {
@@ -68,7 +68,7 @@
                         </div>
                         <div class="form-group">
                             <label class="col-sm-1 col-form-label"
-                                   style="font-size: 15px; width: auto;">Inspektur:</label>
+                                   style="font-size: 15px; width: auto;">Interpreter:</label>
                             <div class="col-sm-3" style="width: auto;">
                                 <select ng-change="submit(1)" ng-disabled="modeEdit" class="form-control"
                                         ng-model="selectUserNames"
@@ -95,27 +95,35 @@
                 </div>
             </div>
             <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4">
-                <div class="borderPoint" style="margin-bottom: 1px">
-                    <div style="padding-left: 1em"><h4>Informasi titik {{ point.originalIndex }}:</h4></div>
-                    <div class="tab">
-                        <p>Kabupaten/Kota: <b>{{point.uf}}</b></p>
-                        <p>Provinsi: <b>{{point.biome}}</b></p>
-                        <p>ID Lokasi: <b>{{point.county}} </b></p>
+                <div class="borderPoint" style="margin-bottom: 1px; display: flex">
+                    <div class="info" style="max-height: 222px; overflow: auto; width: 100%;">
+                        <div style="padding-left: 1em"><h4>Informasi titik {{ point.originalIndex }}:</h4></div>
+                        <div class="tab">
+                            <div>Kabupaten/Kota: <b>{{point.uf}}</b></div>
+                            <div>Provinsi: <b>{{point.biome}}</b></div>
+                            <div>ID Lokasi: <b>{{point.county}} </b></div>
+                        </div>
+                        <div style="margin-top: 5px" class="tab"><p><b>Koordinat:<br></b> {{point.lat | number:4}}, {{point.lon | number:4}} - lat-lon <br></b> {{point.lon | number:4}}, {{point.lat | number:4}} - lon-lat </p>
+                        </div>
+                        <div class="tab"><p><b>Durasi Inspeksi:</b> {{timeInspectionPoint}} detik.</p></div>
                     </div>
-                    <div class="tab"><p><b>Koordinat:<br></b> {{point.lat | number:4}}, {{point.lon | number:4}} - lat-lon <br></b> {{point.lon | number:4}}, {{point.lat | number:4}} - lon-lat </p>
+                    <div class="actions"  style="max-width: 348px;">
+                        <div style="padding-left: 1em"><h4>Alat Visualisasi:</h4></div>
+                        <div style="display: flex; justify-content: center;  flex-wrap: wrap">
+                            <input style="margin-top: 0px;" ng-click="changePeriod()" type="button" class="btn btn-warning"
+                                   value="Periode Musim">
+                            <input style="margin-top: 0px;" ng-click="getKml()" type="button" class="btn btn-success"
+                                   value="Google Earth">
+                            <input ng-hide="buttonEdit == true" style="margin-top: 0px;" ng-click="editClass()" type="button"
+                                   class="btn btn-primary" value="Sunting">
+                            <input ng-hide="buttonEdit == false" style="margin-top: 0px;" ng-click="saveClass()" type="button"
+                                   ng-submit="submit(1)" class="btn btn-primary" value="Simpan">
+                            <input style="margin-top: 0px;" ng-click="downloadCSVBorda()" type="button"
+                                   ng-submit="submit(1)" class="btn btn-info" value="Batas CSV">
+                        </div>
+
                     </div>
-                    <div class="tab"><p><b>Durasi Inspeksi:</b> {{timeInspectionPoint}} detik.</p></div>
-                    <div style="padding-left: 1em"><h4>Alat Visualisasi:</h4></div>
-                    <input style="margin-top: 0px;" ng-click="changePeriod()" type="button" class="btn btn-warning"
-                           value="Periode Musim">
-                    <input style="margin-top: 0px;" ng-click="getKml()" type="button" class="btn btn-success"
-                           value="Google Earth">
-                    <input ng-hide="buttonEdit == true" style="margin-top: 0px;" ng-click="editClass()" type="button"
-                           class="btn btn-primary" value="Sunting">
-                    <input ng-hide="buttonEdit == false" style="margin-top: 0px;" ng-click="saveClass()" type="button"
-                           ng-submit="submit(1)" class="btn btn-primary" value="Simpan">
-                    <input style="margin-top: 0px;" ng-click="downloadCSVBorda()" type="button"
-                           ng-submit="submit(1)" class="btn btn-info" value="Batas CSV">
+
                 </div>
             </div>
             <div class="col-xs-6 col-sm-6 col-md-8 col-lg-8" style="height: 220px; overflow-y: scroll;">
@@ -130,7 +138,7 @@
                     <table class="table table-condensed table-users">
                         <thead ng-hide="point.inspection == 0" style="font-weight: bold;">
                         <tr>
-                            <td>Inspektur</td>
+                            <td>Interpreter</td>
                         </tr>
                         </thead>
                         <tbody ng-hide="point.inspection == 0">
@@ -193,7 +201,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="top: 400px;">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="top: 350px;">
             <div class="row">
                 <span class="pull-left" style="font-weight: bold; font-size: 18px; margin:5px 5px 5px 5px;">Komposit Landsat <span ng-hide="isRaisg" class="titleMaps"> RGB(SWIR,NIR,RED)</span>
                 <br><br>

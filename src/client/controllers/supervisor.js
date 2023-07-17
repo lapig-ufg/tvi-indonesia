@@ -23,7 +23,7 @@ Application.controller('supervisorController', function ($rootScope, $scope, $lo
         $scope.isRaisg = ($rootScope.user.campaign._id.indexOf('samples') != -1 || $rootScope.user.campaign._id.indexOf('raisg') != -1);
 
         $scope.dataTab = [
-            {"name": "Inspektur", "checked": true},
+            {"name": "Interpreter", "checked": true},
             {"name": "Titik", "checked": false}
         ];
 
