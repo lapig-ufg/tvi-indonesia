@@ -5,12 +5,12 @@ $rootScope.user.campaign.numInspec
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <legend>Informasi titik</legend>
-                    <p>Kabupaten/Kota: <b>{{point.uf}}</b></p>
-                    <p>Provinsi: <b>{{point.biome}}</b></p>
-                    <p>ID Lokasi: <b>{{point.county}} </b></p>
-                    <p><b>Koordinat:<br></b> {{point.lat | number:4}}, {{point.lon | number:4}} - lat-lon <br></b> {{point.lon | number:4}}, {{point.lat | number:4}} - lon-lat </p>
+                    <div>Kabupaten/Kota: <b>{{point.uf}}</b></div>
+                    <div>Provinsi: <b>{{point.biome}}</b></div>
+                    <div>ID Lokasi: <b>{{point.county}} </b></div>
+                    <div style="margin-top: 5px; margin-bottom: 5px;"><b>Koordinat:<br></b> {{point.lat | number:4}}, {{point.lon | number:4}} - lat-lon <br></b> {{point.lon | number:4}}, {{point.lat | number:4}} - lon-lat </div>
                     <fieldset>
-                        <legend>Penggunaan dan Tutupan Lahan:</legend>
+                        <legend style="font-size: 18px">Penggunaan dan Tutupan Lahan:</legend>
                         <input style="margin-top: 0px;" ng-click="changePeriod()" type="button" class="btn btn-warning"
                                value="Periode Musim">
                         <input style="margin-top: 0px;" ng-click="getKml()" type="button" class="btn btn-success"
