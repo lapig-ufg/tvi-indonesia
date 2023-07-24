@@ -98,7 +98,7 @@ Application
           L.circle(
               [$scope.lat, $scope.lon],
               {
-                radius: 300,
+                radius: 150,
                 color: '#29e7e4',
                 weight: 2,
                 fill: false
