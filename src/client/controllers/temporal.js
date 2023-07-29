@@ -496,8 +496,8 @@ Application.controller('temporalController', function ($rootScope, $scope, $loca
             generateMaps();
 
             if (!$scope.isChaco) {
-                createModisChart(data.point.dates);
-                createLandsatChart()
+                // createModisChart(data.point.dates);
+                // createLandsatChart()
             }
 
             $scope.counter = 0;

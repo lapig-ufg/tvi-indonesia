@@ -639,8 +639,8 @@ Application.controller('supervisorController', function ($rootScope, $scope, $lo
             //generateOptionYears($scope.config.initialYear, $scope.config.finalYear);
             generateMaps();
             if (!$scope.isChaco) {
-                createModisChart(data.point.dates);
-                createLandsatChart();
+                // createModisChart(data.point.dates);
+                // createLandsatChart();
             }
             $scope.counter = 0;
 
