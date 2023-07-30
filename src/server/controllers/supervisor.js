@@ -144,7 +144,7 @@ module.exports = function (app) {
                 }
                 inspections.form.forEach(function (i) {
                     for (var year = i.initialYear; year <= i.finalYear; year++) {
-                        yearlyInspection.landUse.push(`${i.landUse} ${i.pixelBorder ? ' - BORDA' : ''}`);
+                        yearlyInspection.landUse.push(`${i.landUse} ${i.pixelBorder ? '' : ''}`);
                     }
                 });
 
@@ -231,7 +231,7 @@ module.exports = function (app) {
                                                 as: "consolidated",
                                                 cond: {
                                                     $and: [
-                                                        {$eq: ['$$consolidated', 'Não consolidado']}
+                                                        {$eq: ['$$consolidated', 'Tidak Terkonsolidasi']}
                                                     ]
                                                 }
                                             }

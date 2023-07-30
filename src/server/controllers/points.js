@@ -171,7 +171,7 @@ module.exports = function(app) {
 
 				} else if(numElemObj == countNumElem && flagConsolid == false) {
 					flagConsolid = true;
-					classConsolidated.push("Não consolidado")
+					classConsolidated.push("Tidak Terkonsolidasi")
 				}
 			}
 		}

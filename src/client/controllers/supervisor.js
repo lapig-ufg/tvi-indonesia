@@ -535,7 +535,7 @@ Application.controller('supervisorController', function ($rootScope, $scope, $lo
                     var flagError = true
 
                     for (var i = 0; i < $scope.objConsolidated.length; i++) {
-                        if ($scope.objConsolidated[i] == 'Não consolidado') {
+                        if ($scope.objConsolidated[i] == 'Tidak Terkonsolidasi') {
                             if (flagError)
                                 window.alert("Gagal dalam operasi, lengkapi semua bidang.");
                             flagError = false;
@@ -562,10 +562,9 @@ Application.controller('supervisorController', function ($rootScope, $scope, $lo
                 $scope.buttonEdit = false;
 
                 $scope.editClass = function (element) {
-                    var arrayConsolid = $scope.objConsolidated
+                    var arrayConsolid = $scope.objConsolidated ? $scope.objConsolidated : [];
                     $scope.selectedLandUses = []
                     $scope.modeEdit = true;
-
                     for (var i = 0; i < arrayConsolid.length; i++) {
                         $scope.selectedLandUses.push(arrayConsolid[i])
                     }
@@ -626,6 +625,7 @@ Application.controller('supervisorController', function ($rootScope, $scope, $lo
         var loadPoint = function (data) {
             $scope.campaign = data.campaign;
             $scope.objConsolidated = data.point.classConsolidated;
+            console.log($scope.objConsolidated)
             $scope.onSubmission = false;
             $scope.pointLoaded = true;
             $scope.point = data.point;

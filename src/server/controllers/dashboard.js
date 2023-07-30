@@ -239,7 +239,7 @@ module.exports = function(app){
 
 						if(doc.pointEdited == true) {
 							result[initialYear+i+'_pontosConcAdm']++;
-						} else if(doc.classConsolidated[i] == 'Não consolidado') {
+						} else if(doc.classConsolidated[i] == 'Tidak Terkonsolidasi') {
 							result[initialYear+i+'_pontosNaoConc']++;
 						} else{
 							result[initialYear+i+'_pontosConc']++;

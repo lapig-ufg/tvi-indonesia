@@ -122,7 +122,7 @@ const classConsolidate = (pointDb, campaign, pointsCollection, db, next) => {
 
                     } else if (numElemObj === countNumElem && flagConsolid === false) {
                         flagConsolid = true;
-                        classConsolidated.push("Não consolidado")
+                        classConsolidated.push("Tidak Terkonsolidasi")
                     }
                 }
             }

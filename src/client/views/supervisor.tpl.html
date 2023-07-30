@@ -114,7 +114,7 @@
                                    value="Periode Musim">
                             <input style="margin-top: 0px;" ng-click="getKml()" type="button" class="btn btn-success"
                                    value="Google Earth">
-                            <input ng-hide="buttonEdit == true" style="margin-top: 0px;" ng-click="editClass()" type="button"
+                            <input ng-if="objConsolidated.length > 0" ng-hide="buttonEdit == true" style="margin-top: 0px;" ng-click="editClass()" type="button"
                                    class="btn btn-primary" value="Sunting">
                             <input ng-hide="buttonEdit == false" style="margin-top: 0px;" ng-click="saveClass()" type="button"
                                    ng-submit="submit(1)" class="btn btn-primary" value="Simpan">
