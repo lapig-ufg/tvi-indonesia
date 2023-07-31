@@ -2,7 +2,7 @@
 
 # Check if correct number of arguments passed
 if [ $# -ne 4 ]; then
-  echo "Please provide 4 arguments: a directory, a number, start year and end year."
+  echo "Please provide 4 arguments: a directory of points files, a number of interpreters, start year and end year."
   exit 1
 fi
 
