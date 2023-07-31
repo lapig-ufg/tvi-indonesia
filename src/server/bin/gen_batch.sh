@@ -29,7 +29,7 @@ do
   # Form the output file name
   password="$base"_xpto
 
-  echo "$filepath" "$base" "$num" "$password" "$start_year" "$end_year"
+#  echo "$filepath" "$base" "$num" "$password" "$start_year" "$end_year"
   # Run the node script in the background with nohup and output redirected to a log file
-  #nohup node import_points.js "$filepath" "$base" "$num" "$password" "$start_year" "$end_year" > "$logdir/$base.log" 2>&1 &
+  nohup node import_points.js "$filepath" "$base" "$num" "$password" "$start_year" "$end_year" > "$logdir/$base.log" 2>&1 &
 done
