@@ -22,7 +22,7 @@ mosaics = None
 
 def update_campaign(campaign_id):
 	try:
-		db.campaign.update_one({ "_id": campaign_id }, { "$set": {"customURLs":  mosaics}}, upsert=True)
+		db.campaign.update_one({ "_id": campaign_id }, { "$set": {"customURLs":  mosaics, "updateAt": datetime.datetime.now()}}, upsert=True)
 		print(campaign_id + ' updated.')
 	except:
 		traceback.print_exc()
@@ -36,7 +36,7 @@ def get_mosaic_list():
 
 	for year in range(2000, end_year):
 		mosaic = ee.ImageCollection("projects/mapbiomas-indonesia/MOSAICS/workspace-c2").filterMetadata('year', 'equals', year)
-		url = mosaic.getMapId({'bands': ['swir1_median','nir_median', 'red_median'], 'gain': [0.08, 0.06, 0.2], 'gamma': 0.85})
+		url = mosaic.getMapId({'bands': ['swir1_median', 'nir_median', 'red_median'], 'gain': [0.08, 0.06, 0.2], 'gamma': 0.85})
 
 		if year > 2012: 
 			satellite = 'L8'
@@ -64,3 +64,4 @@ with open(sys.argv[2], 'r') as file:
 	for line in file:
 		campaign_id = line.strip()
 		update_campaign(campaign_id)
+
