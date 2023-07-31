@@ -125,18 +125,17 @@ var insertCampaing = function(db) {
 			"password": password,
 			"landUse": [ 
 			    "Formasi Hutan",
-		        "Mangrove",
-		        "Sagu",
-		        "Formasi Non Hutan Lainnya",
-		        "Sawah Irigasi",
-		        "Sawit",
-		        "Perkebunan Kayu Pulp",
-		        "Pertanian Lainnya",
-		        "Tambang",
-		        "Non Vegetasi Lainnya",
-		        "Sungai / Danau",
-		        "Tambak",
-		        "Citra Tertutup Awan"
+                "Mangrove",
+                "Formasi Non Hutan Lainnya",
+                "Sawah Irigasi",
+                "Sawit",
+                "Perkebunan Kayu Pulp",
+                "Pertanian Lainnya",
+                "Tambang",
+                "Non Vegetasi Lainnya",
+                "Sungai / Danau",
+                "Tambak",
+                "Citra Tertutup Awan"
 	    ],
 			"numInspec": parseInt(numInspec)
 		}
