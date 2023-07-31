@@ -50,19 +50,17 @@ def get_mosaic_list():
 		index = f"{satellite}_{year}_WET"
 		keys.append(index)
 
-		values.append(url['tile_fetcher'].url_format)
+		modified_url_format = url['tile_fetcher'].url_format.replace('{', '${')
+		values.append(modified_url_format)
 
 	ee.Reset()
-	return ee.Dictionary.fromLists(keys, values).getInfo()
+	return dict(zip(keys, values))
 
 client = MongoClient(MONGO_HOST, MONGO_PORT)
 db = client['tvi-indonesia']
 mosaics = get_mosaic_list()
 
-print(mosaics)
-
-with open(sys.argv[1], 'r') as file:
+with open(sys.argv[2], 'r') as file:
 	for line in file:
 		campaign_id = line.strip()
-		print(campaign_id)
 		update_campaign(campaign_id)
