@@ -120,6 +120,8 @@
                                    ng-submit="submit(1)" class="btn btn-primary" value="Simpan">
                             <input style="margin-top: 0px;" ng-click="downloadCSVBorda()" type="button"
                                    ng-submit="submit(1)" class="btn btn-info" value="Ekspor CSV">
+                            <input ng-if="point.inspection.length > 0" ng-click="removeInspections()" type="button"
+                                   ng-submit="submit(1)" class="btn btn-danger" value="Remove Inspections">
                         </div>
 
                     </div>

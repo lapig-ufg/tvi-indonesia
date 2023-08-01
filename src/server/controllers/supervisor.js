@@ -626,5 +626,22 @@ module.exports = function (app) {
         }
     }
 
+    Points.removeInspections = async (request, response) => {
+        const {pointId} =  request.params;
+        if (pointId) {
+            const result = await pointsCollection.update({ _id: pointId }, { $set: {
+                inspection: [],
+                userName: [],
+                classConsolidated: [],
+                underInspection: 0,
+                updateAt: new Date()
+            }})
+            response.status(200).send(result);
+        } else {
+            response.status(404).send('Parameter pointId not found');
+            response.end();
+        }
+    }
+
     return Points;
 };
