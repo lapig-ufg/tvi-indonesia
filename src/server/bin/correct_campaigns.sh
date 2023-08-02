@@ -1,10 +1,8 @@
 #!/bin/bash
 
-url_base="https://tvi-indonesia.lapig.iesa.ufg.br/service/campaign/correct?campaignId="
-
 while read -r campaign; do
-#  url="${url_base}${campaign}"
-#  echo  "$url"
-#  echo "$(date) - Calling: $url" >> /APP/tvi/src/server/bin/correct_campaigns.log
-#  curl "$url" > /dev/null 2>&1
+#  /APP/tvi/src/server/bin/correct_campaigns.log
+  echo "$(date) - Calling: $campaign" >> ./correct_campaigns.log
+#  mongo tvi-indonesia --host 172.18.0.6 --eval 'var campaignId="'$campaign'";' correct_campaign.js > /dev/null 2>&1
+  mongo tvi-indonesia --host 172.18.0.6 --eval 'var campaignId="'$campaign'";' correct_campaign.js
 done < "$1"
