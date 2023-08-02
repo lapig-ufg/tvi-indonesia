@@ -676,7 +676,7 @@ Application.controller('supervisorController', function ($rootScope, $scope, $lo
         $scope.removeInspections = () => {
             if (confirm(`Are you sure you want to remove the inspections from the point identified as ${$scope.point._id}?
              Be aware that once the removal is completed, it will no longer be possible to reverse this action.`)) {
-                requester._delete(`service/campaign/removeInspections/${$scope.point._id}`, function (data) {
+                requester._delete(`campaign/removeInspections?pointId=${$scope.point._id}`, function (data) {
                     if(data) {
                         alert(`The inspections from point: ${$scope.point._id} were successfully removed.`);
                         $scope.submit($scope.point.index);

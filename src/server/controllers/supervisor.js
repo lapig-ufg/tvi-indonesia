@@ -627,7 +627,7 @@ module.exports = function (app) {
     }
 
     Points.removeInspections = async (request, response) => {
-        const {pointId} =  request.params;
+        const {pointId} =  request.query;
         if (pointId) {
             const result = await pointsCollection.update({ _id: pointId }, { $set: {
                 inspection: [],
