@@ -518,7 +518,8 @@ module.exports = function (app) {
     }
 
     Points.correctCampaign = async (request, response) => {
-        const campaign = request.session.user.campaign;
+        const {campaignId,} =  request.query;
+        const campaign  = await infoCampaign.findOne({'_id': campaignId})
         if (campaign) {
             const points = await pointsCollection.find({ 'campaign': campaign._id }).toArray();
             const numInspections = campaign.numInspec;
@@ -542,6 +543,7 @@ module.exports = function (app) {
             msgs.join("\n")
             response.status(200).send(msgs);
             response.end();
+
         } else {
             response.status(400).send('Parameter campaign not found');
             response.end();

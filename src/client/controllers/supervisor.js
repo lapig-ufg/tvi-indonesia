@@ -652,9 +652,7 @@ Application.controller('supervisorController', function ($rootScope, $scope, $lo
 
         var correctCampain = () => {
             $scope.showloading = true;
-            requester._get(`campaign/correct`, {
-                "campaign": $rootScope.user.campaign._id
-            }, function (data) {
+            requester._get(`campaign/correct?campaignId=${$rootScope.user.campaign._id}`, function (data) {
                 $scope.showloading = false;
                 $window.alert(data ? `Diperbaiki: Titik-titik ${data}` : 'Dengan perusahaan tanpa masalah dengan inspeksi.')
             });
