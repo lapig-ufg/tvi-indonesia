@@ -1,4 +1,3 @@
-console.log('campaignId', campaignId)
 db.getCollection('points').find({'campaign': campaignId}).forEach(function(point) {
     const campaign = db.getCollection('campaign').findOne({_id: point.campaign})
     const numInspections = db.getCollection('campaign').distinct('numInspec',{'_id': point.campaign})
