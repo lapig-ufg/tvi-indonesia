@@ -557,10 +557,9 @@ module.exports = function (app) {
             const initialYear = campaign.initialYear
             const finalYear =campaign.finalYear
 
-            const colNames = ["id","lat","lon"]
+            const colNames = ["id", "lat", "lon"]
 
             for(let i=0; i < nInspections; i++) {
-
                 colNames.push('user_' + (i+1))
                 colNames.push('time_' + (i+1))
 
@@ -584,41 +583,40 @@ module.exports = function (app) {
                 delimiter: ';'
             });
 
-            const points = await pointsCollection.find({ 'campaign': campaign._id }).toArray()
+            const points = await pointsCollection.find({'campaign': campaign._id}).toArray()
 
             points.forEach(point => {
                 const result = [ point._id, point.lon, point.lat ]
-                for(let i=0; i < nInspections; i++) {
 
+                for (let i= 0; i < nInspections; i++) {
                     var inspection = point.inspection[i]
-
                     if (point.userName[i]) {
                         result.push(point.userName[i].toLowerCase())
                         result.push(inspection.counter)
 
-                        for(var j=0; j < inspection.form.length; j++) {
+                        for(var j= 0; j < inspection.form.length; j++) {
                             var form = inspection.form[j]
 
-                            for(var y=form.initialYear; y <= form.finalYear; y++) {
+                            for(var y = form.initialYear; y <= form.finalYear; y++) {
                                 result.push(form.landUse)
                                 result.push(form.pixelBorder)
                             }
                         }
                     }
-
                 }
 
-                const consolidated = point.classConsolidated
+                const consolidated = point.classConsolidated;
 
                 if (consolidated) {
                     for(let i=0; i < consolidated.length; i++) {
                         result.push(consolidated[i])
                     }
-
                     result.push(point.pointEdited)
                 }
+
                 csvStream.write(result)
             })
+
             csvStream.end();
 
             csvStream.pipe(response).on('end', () => response.end());

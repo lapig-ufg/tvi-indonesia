@@ -17,6 +17,14 @@ Application.controller('navController', function($rootScope, $scope, $location, 
 		window.open('service/points/csv', '_blank')
 	};
 
+	$scope.downloadFinalReport = function() {
+		if($rootScope.campaignFinished){
+			window.open(`https://timeseries.lapig.iesa.ufg.br/api/analytics/tvi-indonesia/${$rootScope.user.campaign._id}/csv?direct=true`, '_blank')
+		} else {
+			$window.alert(`The campaign/login was not completed. There are still points to finish the inspections.`)
+		}
+	};
+
 	requester._get('login/user', function(result) {
 		$rootScope.user = result;
 	});

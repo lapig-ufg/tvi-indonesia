@@ -12,7 +12,7 @@ module.exports = function(app) {
 	
 	Cache.populateCache = function(requestPointCache, pointCacheCompĺete, finished) {
 
-		var periods = ['DRY','WET']
+		var periods = ['DRY', 'WET']
 
  		var getRequestTasks = function(point, campaign) {
 

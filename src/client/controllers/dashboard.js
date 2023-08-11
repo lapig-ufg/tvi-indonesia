@@ -75,7 +75,7 @@ Application.controller('dashboardController', function($rootScope, $scope, $loca
 		  		size: 18
 		  	}
 			};
-
+			console.log('pointsComplet',data.pointsComplet)
 			Plotly.newPlot(gd, chartPizza, layout, {displayModeBar: false});	
 			chartsGd.push(gd);
 		});

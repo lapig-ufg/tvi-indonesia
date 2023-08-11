@@ -5,6 +5,7 @@ Application.controller('supervisorController', function ($rootScope, $scope, $lo
     $scope.showChartsLandsat = false
     $scope.showCorrectCampaign = false;
     $scope.showloading = true;
+    $rootScope.campaignFinished
     util.waitUserData(function () {
         $scope.showloading = false;
         $scope.size = 4;
@@ -637,6 +638,7 @@ Application.controller('supervisorController', function ($rootScope, $scope, $lo
             initFormViewVariables();
             //generateOptionYears($scope.config.initialYear, $scope.config.finalYear);
             generateMaps();
+            getCampaignMatadata();
             if (!$scope.isChaco) {
                 // createModisChart(data.point.dates);
                 // createLandsatChart();
@@ -655,6 +657,13 @@ Application.controller('supervisorController', function ($rootScope, $scope, $lo
             requester._get(`campaign/correct?campaignId=${$rootScope.user.campaign._id}`, function (data) {
                 $scope.showloading = false;
                 $window.alert(data ? `Diperbaiki: Titik-titik ${data}` : 'Dengan perusahaan tanpa masalah dengan inspeksi.')
+            });
+        }
+        const getCampaignMatadata = () => {
+            $scope.showloading = true;
+            requester._get(`dashboard/points-inspection`, function (data) {
+                $scope.showloading = false;
+                $rootScope.campaignFinished = data.pointsComplet == 100;
             });
         }
 
